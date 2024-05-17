@@ -1,0 +1,10 @@
+li{  
+    list-style: none;
+}
+.logo-image {
+    width: 60px; /* Spécifiez la largeur de l'image */
+    height: auto; /* Permet de conserver les proportions de l'image */
+    margin-right: 3px; /* Marge à droite pour séparer l'image du texte */
+    display: flex;
+   
+  }
