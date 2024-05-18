@@ -20,7 +20,7 @@ const intialValues = {
   image:"",
   location:"",
   name:"",
-  startedAt:"",
+  startedAt:null,
   endsAt:null
 }
 const Events = () => {

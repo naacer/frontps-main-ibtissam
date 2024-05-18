@@ -1,9 +1,11 @@
-import { AddPhotoAlternate } from '@mui/icons-material'
+import { AddPhotoAlternate, Token } from '@mui/icons-material'
 import { Button, CircularProgress, Grid, IconButton, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { uploadImageToCloudinary } from '../util/UploadToCloudinary';
+import { useDispatch } from 'react-redux';
+import { createRestaurant } from '../../component/State/Restaurant/Action';
 
 const initialValues={
   name:"",
@@ -23,10 +25,13 @@ const initialValues={
 }
 const CreateRestaurantForm = () => {
   const [uploadImage, setUploadImage] = useState(false);
+  const dispatch=useDispatch()
+  const jwt=localStorage.getItem("jwt");
   const formik = useFormik({
     initialValues,
     onSubmit: (values)=> {
       const data = {
+        
         name:values.name,
         description: values.description,
         cuisineType: values.cuisineType,
@@ -47,6 +52,8 @@ const CreateRestaurantForm = () => {
       images: values.images,
     };
     console.log("data ---",data)
+
+    dispatch(createRestaurant({data,Token:jwt}))
   },
   })
   const handleImageChange = async(e) => {
