@@ -26,7 +26,7 @@ const initialValues={
 const CreateRestaurantForm = () => {
   const [uploadImage, setUploadImage] = useState(false);
   const dispatch=useDispatch()
-  const jwt=localStorage.getItem("jwt");
+  const token=localStorage.getItem("jwt");
   const formik = useFormik({
     initialValues,
     onSubmit: (values)=> {
@@ -53,9 +53,10 @@ const CreateRestaurantForm = () => {
     };
     console.log("data ---",data)
 
-    dispatch(createRestaurant({data,Token:jwt}))
+    dispatch(createRestaurant({data,token}))
+    
   },
-  })
+  });
   const handleImageChange = async(e) => {
     const file=e.target.files[0]
     setUploadImage(true)

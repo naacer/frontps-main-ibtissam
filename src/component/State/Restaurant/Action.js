@@ -67,7 +67,7 @@ export const createRestaurant = (reqData) => {
                     Authorization: `Bearer ${reqData.token}`,
                 },
             });
-            console.log("create restaurant",data);
+            console.log("created restaurant",data);
             dispatch({type:CREATE_RESTAURANT_SUCCESS,payload:data});
         }catch(error){
              console.log("catch error", error)
